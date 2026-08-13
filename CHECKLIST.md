@@ -20,17 +20,16 @@ Pesos de rúbrica entre paréntesis. Orden de ejecución: Mongo → Postgres/ACI
 - [x] Query: insumos que vencen en próximos 7 días — `database/mongodb/03_query_vencimientos.js`
 
 **PostgreSQL Neon/Supabase** (`erp_restaurante`)
-- [ ] Tabla `facturas` (dado por la guía)
-- [ ] Tabla `registro_impuestos` con FK a `facturas` (dado por la guía)
-- [ ] Tabla `detalle_factura` (Reto 2): FK a `facturas`, incluye `codigo_sku_producto`, `cantidad`, `subtotal`
-- [ ] Demo ROLLBACK (dado por la guía: BEGIN → error tipo → ROLLBACK)
-- [ ] Demo COMMIT (Reto 3): transacción exitosa factura + detalle + impuestos
+- [ ] Proyecto Postgres creado en Neon/Supabase (pendiente: acción manual del estudiante)
+- [x] Tabla `facturas` + `registro_impuestos` + `detalle_factura` (Reto 2, FK a `facturas`) — `database/postgresql/01_schema.sql`
+- [x] Demo ROLLBACK (dado por la guía) — `database/postgresql/02_rollback_demo.sql`
+- [x] Demo COMMIT (Reto 3): factura + detalle + impuestos en una sola transacción con CTEs — `database/postgresql/03_commit_demo.sql`
 
 ## Fase 3 — Backend / Microservicios
-- [ ] `microservicio_contabilidad/` — Python/FastAPI + PostgreSQL (app.py, requirements.txt)
-- [ ] `microservicio_inventario/` — Python/FastAPI + MongoDB
-- [ ] Endpoints mínimos para probar el flujo de venta descrito en el PlantUML
-- [ ] Pruebas locales (sin Docker todavía) contra Neon y Atlas
+- [x] `microservicio_contabilidad/` — FastAPI + PostgreSQL: `POST /facturas` (transacción factura+detalle+impuestos), `GET /health`
+- [x] `microservicio_inventario/` — FastAPI + MongoDB: `GET /productos`, `GET /inventario/vencimientos`, `POST /inventario/descontar`, `GET /health`
+- [x] Pruebas locales: unitarias (lógica pura) + integración con dependencias simuladas (mongomock / conexión Postgres mockeada) + arranque real de ambos `uvicorn` con `/docs` respondiendo 200
+- [ ] Pruebas contra Neon/Atlas reales (pendiente: requiere credenciales del estudiante, ver `.env.example` de cada servicio)
 
 ## Fase 4 — Docker (20%)
 - [ ] `microservicio_contabilidad/Dockerfile` (python:3.10-slim, dado por la guía)
