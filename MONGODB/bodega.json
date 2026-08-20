@@ -1,0 +1,28 @@
+{
+  "_id": {
+    "$oid": "6a867e176ef0e6982d385f17"
+  },
+  "id_bodega": "INS-022",
+  "insumo": "Carne de Res",
+  "categoria": "Cárnicos",
+  "cantidad_disponible": 15000,
+  "unidad": "gramos",
+  "lote": "LOTE-2026-08-A",
+  "fecha_ingreso": {
+    "$date": "2026-08-15T00:00:00.000Z"
+  },
+  "fecha_vencimiento": {
+    "$date": "2026-08-24T00:00:00.000Z"
+  },
+  "proveedores_aprobados": [
+    {
+      "nombre": "Carnes Finas de la Sabana S.A.S.",
+      "telefono": "3101234567"
+    },
+    {
+      "nombre": "Distribuidora Cárnica Andina",
+      "telefono": "3209876543"
+    }
+  ],
+  "estado": "Disponible"
+}
